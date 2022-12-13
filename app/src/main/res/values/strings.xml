@@ -13,4 +13,5 @@
     <string name="movies_fragment">Movies Fragment</string>
     <string name="search_fragment">Search Fragment</string>
     <string name="profile_fragment">Profile Fragment</string>
+    <string name="login_fragment">Login Fragment</string>
 </resources>
