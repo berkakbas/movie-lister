@@ -1,14 +1,14 @@
-package com.example.movielister
+package com.example.movielister.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.movielister.databinding.FragmentSearchBinding
+import com.example.movielister.databinding.FragmentProfileBinding
 
-class SearchFragment : Fragment() {
-    private var _binding: FragmentSearchBinding? = null
+class ProfileFragment : Fragment() {
+    private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +16,7 @@ class SearchFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = FragmentSearchBinding.inflate(inflater, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root = binding.root
         return root
     }
