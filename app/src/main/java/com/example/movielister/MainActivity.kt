@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
 
         setCurrentFragment(homeFragment)
 
-
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.movies -> setCurrentFragment(homeFragment)
@@ -31,7 +30,6 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-
     }
 
     private fun setCurrentFragment(fragment: Fragment) {
