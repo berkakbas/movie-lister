@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">MovieLister</string>
+    <string name="home">Home</string>
+    <string name="movies">Movies</string>
+    <string name="tv_series">TV Series</string>
+    <string name="search">Search</string>
+    <string name="profile">Profile</string>
+    <string name="login">Login</string>
+    <string name="movies_or_series">Movies or Series</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_fragment">Home Fragment</string>
+    <string name="movies_fragment">Movies Fragment</string>
+    <string name="search_fragment">Search Fragment</string>
+    <string name="profile_fragment">Profile Fragment</string>
 </resources>
