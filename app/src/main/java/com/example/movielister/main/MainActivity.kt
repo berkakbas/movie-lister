@@ -5,10 +5,8 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.movielister.R
 import com.example.movielister.databinding.ActivityMainBinding
+import com.example.movielister.factory.BasicFragmentFactory
 import com.example.movielister.movies.MoviesFragment
-import com.example.movielister.profile.ProfileFragment
-import com.example.movielister.search.SearchFragment
-import com.example.movielister.tvseries.TvSeriesFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -16,23 +14,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         val homeFragment = MoviesFragment()
-        val moviesFragment = TvSeriesFragment()
-        val searchFragment = SearchFragment()
-        val profileFragment = ProfileFragment()
-
         setCurrentFragment(homeFragment)
 
         binding.bottomNavigationView.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.movies -> setCurrentFragment(homeFragment)
-                R.id.tvSeries -> setCurrentFragment(moviesFragment)
-                R.id.search -> setCurrentFragment(searchFragment)
-                R.id.profile -> setCurrentFragment(profileFragment)
-            }
+            setCurrentFragment(BasicFragmentFactory.generateFragment(it.itemId))
             true
         }
     }

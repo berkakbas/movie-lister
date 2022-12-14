@@ -17,7 +17,6 @@ class TvSeriesFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentTvSeriesBinding.inflate(inflater, container, false)
-        val root = binding.root
-        return root
+        return binding.root
     }
 }
