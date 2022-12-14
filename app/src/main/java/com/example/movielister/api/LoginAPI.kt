@@ -9,11 +9,11 @@ import retrofit2.http.Path
 
 interface LoginAPI {
     @GET(BASE_URL + AUTH_TOKEN_NEW + API_STR + API_KEY)
-    suspend fun createToken(): Call<List<TokenModel>>
+    fun createToken(): Call<TokenModel>
 
     @POST("$BASE_URL$AUTH_SESSION_NEW$API_STR$API_KEY/{request_token}")
-    suspend fun createSession(@Path("request_token") token: String): Call<SessionModel>
+    fun createSession(@Path("request_token") token: String): Call<SessionModel>
 
     @POST("$BASE_URL$AUTH_TOKEN_LOGIN$API_STR$API_KEY/{username}/{password}/{request_token}")
-    suspend fun createSessionWithLogin(@Path("username") username: String, @Path("password") password: String, @Path("request_token") token: String): Call<TokenModel>
+    fun createSessionWithLogin(@Path("username") username: String, @Path("password") password: String, @Path("request_token") token: String): Call<TokenModel>
 }

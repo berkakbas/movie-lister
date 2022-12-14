@@ -7,8 +7,8 @@ import retrofit2.http.Path
 
 interface TvSeriesAPI {
     @GET(BASE_URL + POPULAR_TV + API_STR + API_KEY)
-    suspend fun fetchPopularTvSeries(): Call<List<TvSeriesModel>>
+    fun fetchPopularTvSeries(): Call<List<TvSeriesModel>>
 
     @GET("$BASE_URL$TV{id}/$API_STR$API_KEY")
-    suspend fun fetchTvSerie(@Path("id") tvId: Int): Call<TvSeriesModel>
+    fun fetchTvSerie(@Path("id") tvId: Int): Call<TvSeriesModel>
 }
