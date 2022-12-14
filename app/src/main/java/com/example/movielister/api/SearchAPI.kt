@@ -7,9 +7,9 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface SearchAPI {
-    @GET("$BASE_URL$SEARCH_MOVIE$API_STR$API_KEY/{query}")
+    @GET("$BASE_URL$SEARCH_MOVIE{query}$API_STR$API_KEY")
     fun searchMovie(@Path("query") query: String): Call<List<MovieModel>>
 
-    @GET("$BASE_URL$SEARCH_TV_SERIE$API_STR$API_KEY/{query}")
+    @GET("$BASE_URL$SEARCH_TV_SERIE{query}$API_STR$API_KEY")
     fun searchTvSerie(@Path("query") query: String): Call<List<TvSeriesModel>>
 }

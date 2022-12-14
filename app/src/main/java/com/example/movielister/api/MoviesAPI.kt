@@ -9,6 +9,6 @@ interface MoviesAPI {
     @GET(BASE_URL + POPULAR_MOVIE + API_STR + API_KEY)
     fun fetchPopularMovies(): Call<List<MovieModel>>
 
-    @GET("$BASE_URL$MOVIE{id}/$API_STR$API_KEY")
+    @GET("$BASE_URL$MOVIE{id}$API_STR$API_KEY")
     fun fetchMovie(@Path("id") movieId: Int): Call<MovieModel>
 }
