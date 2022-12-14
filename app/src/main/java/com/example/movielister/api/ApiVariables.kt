@@ -1,7 +1,7 @@
 package com.example.movielister.api
 //Common strings
 const val API_KEY = "6f27435bd11b1d70da4ffae984061303"
-const val BASE_URL = "https://api.themoviedb.org/"
+const val BASE_URL = "https://api.themoviedb.org/3/"
 const val API_STR = "api_key="
 
 //Movie api endpoints
