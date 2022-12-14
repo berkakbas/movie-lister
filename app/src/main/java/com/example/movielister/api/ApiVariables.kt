@@ -9,7 +9,7 @@ const val POPULAR_MOVIE = "movie/popular/"
 const val MOVIE = "movie/"
 
 //Tv Series api endpoints
-const val POPULAR_TV = "movie/popular/"
+const val POPULAR_TV = "tv/popular/"
 const val TV = "tv/"
 
 //Person api endpoints
