@@ -32,9 +32,9 @@ object MoviesNetwork {
         return popularMovies
     }
 
-    fun fetchMovie(id: Int): MovieModel {
+    fun fetchMovie(id: Int): MovieModel? {
         val call = createMoviesAPI().fetchMovie(id)
-        lateinit var movie: MovieModel
+        var movie: MovieModel? = null
 
         call.enqueue(
             object : Callback<MovieModel> {
