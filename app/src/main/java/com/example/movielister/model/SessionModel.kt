@@ -1,8 +1,9 @@
 package com.example.movielister.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class SessionModel(
-    @SerializedName("success") val success: Boolean,
-    @SerializedName("session_id") val session_id: String
+    val success: Boolean,
+    val session_id: String
 )

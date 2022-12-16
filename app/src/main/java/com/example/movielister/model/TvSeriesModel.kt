@@ -1,11 +1,12 @@
 package com.example.movielister.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class TvSeriesModel(
-    @SerializedName("id") val id: Int,
-    @SerializedName("name") val name: String,
-    @SerializedName("overview") val overview: String,
-    @SerializedName("poster_path") val posterPath: String?,
-    @SerializedName("backdrop_path") val backdrop_path: String?
+    val id: Int,
+    val name: String,
+    val overview: String,
+    val posterPath: String?,
+    val backdrop_path: String?
 )
