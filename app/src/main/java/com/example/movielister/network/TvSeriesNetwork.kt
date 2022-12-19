@@ -32,9 +32,9 @@ object TvSeriesNetwork {
         return popularTvSeries
     }
 
-    fun fetchTvSerie(id: Int): TvSeriesModel {
+    fun fetchTvSerie(id: Int): TvSeriesModel? {
         val call = createTvSeriesAPI().fetchTvSerie(id)
-        lateinit var tvSerie: TvSeriesModel
+        var tvSerie: TvSeriesModel? = null
 
         call.enqueue(
             object : Callback<TvSeriesModel> {

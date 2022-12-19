@@ -11,9 +11,9 @@ object PersonNetwork {
         return WebService.createRetrofit().create(PersonAPI::class.java)
     }
 
-    fun fetchPersonInfo(id: Int): PersonModel {
+    fun fetchPersonInfo(id: Int): PersonModel? {
         val call = createPersonAPI().fetchPersonInfo(id)
-        lateinit var person: PersonModel
+        var person: PersonModel? = null
 
         call.enqueue(
             object : Callback<PersonModel> {

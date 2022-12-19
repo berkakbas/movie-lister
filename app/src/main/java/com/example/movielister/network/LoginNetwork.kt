@@ -11,9 +11,9 @@ object LoginNetwork {
         return WebService.createRetrofit().create(LoginAPI::class.java)
     }
 
-    fun createToken(): TokenModel {
+    fun createToken(): TokenModel? {
         val call = createLoginAPI().createToken()
-        lateinit var token: TokenModel
+        var token: TokenModel? = null
 
         call.enqueue(object : Callback<TokenModel> {
             override fun onResponse(call: Call<TokenModel>, response: Response<TokenModel>) {
