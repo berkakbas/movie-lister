@@ -18,6 +18,8 @@ class MovieListAdapter(private val movieList: List<MovieModel>) : RecyclerView.A
     override fun onBindViewHolder(holder: MovieHolder, position: Int) {
         val movie = movieList.get(position)
         holder.binding.movieName.text = movie.title
+        holder.binding.releaseDateText.text = movie.releaseDate
+        holder.binding.ratingText.text = movie.voteAverage.toString()
         Picasso.get().load(movie.posterPath).resize(100, 100).into(holder.binding.movieImage)
         holder.itemView.setOnClickListener {
             /*
