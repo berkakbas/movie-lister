@@ -18,7 +18,7 @@ class MovieListAdapter(private val movieList: List<MovieModel>) : RecyclerView.A
     override fun onBindViewHolder(holder: MovieHolder, position: Int) {
         val movie = movieList.get(position)
         holder.binding.movieName.text = movie.title
-        //Picasso.get().load(movie.posterPath).resize(50, 50).into(holder.binding.movieImage)
+        Picasso.get().load(movie.posterPath).resize(100, 100).into(holder.binding.movieImage)
         holder.itemView.setOnClickListener {
             /*
             val intent = Intent(holder.itemView.context, MovieDetailsActivity::class.java)

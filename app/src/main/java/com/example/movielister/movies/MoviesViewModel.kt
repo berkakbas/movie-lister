@@ -20,7 +20,7 @@ class MoviesViewModel() : ViewModel() {
     fun fetchPopularMovies() {
         viewModelScope.launch {
             try {
-                val popularMovies = moviesService.fetchPopularMovies()
+                val popularMovies = moviesService.fetchPopularMovies().results
                 _popularMoviesList.emit(popularMovies)
             } catch (e: Exception) {
                 e.printStackTrace()

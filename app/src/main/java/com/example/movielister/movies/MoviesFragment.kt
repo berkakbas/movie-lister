@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movielister.adapter.MovieListAdapter
 import com.example.movielister.databinding.FragmentMoviesBinding
 import com.example.movielister.model.MovieModel
@@ -25,11 +26,15 @@ class MoviesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentMoviesBinding.inflate(inflater, container, false)
         val root = binding.root
+        return root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         moviesViewModel.fetchPopularMovies()
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             moviesViewModel.popularMoviesList.collect { popularList ->
+                binding.moviesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
                 binding.moviesRecyclerView.adapter = MovieListAdapter(popularList)
             }
         }
@@ -39,6 +44,6 @@ class MoviesFragment : Fragment() {
             }
         }
 
-        return root
+        super.onViewCreated(view, savedInstanceState)
     }
 }
