@@ -22,7 +22,7 @@ class SearchViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val movies = searchService.searchMovie(query)
-                _movieResults.emit(movies)
+                _movieResults.emit(movies.results)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -33,7 +33,7 @@ class SearchViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val series = searchService.searchTvSerie(query)
-                _seriesResults.emit(series)
+                _seriesResults.emit(series.results)
             } catch (e: Exception) {
                 e.printStackTrace()
             }

@@ -2,18 +2,18 @@ package com.example.movielister.api
 
 import com.example.movielister.BuildConfig.API_KEY
 import com.example.movielister.BuildConfig.API_STR
-import com.example.movielister.model.MovieModel
-import com.example.movielister.model.TvSeriesModel
+import com.example.movielister.model.MovieResponseModel
+import com.example.movielister.model.TvSeriesResponseModel
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Query
 
 const val SEARCH_MOVIE = "search/movie/"
 const val SEARCH_TV_SERIE = "search/tv/"
 
 interface SearchAPI {
-    @GET("$SEARCH_MOVIE{query}$API_STR$API_KEY")
-    fun searchMovie(@Path("query") query: String): List<MovieModel>
+    @GET("$SEARCH_MOVIE$API_STR$API_KEY")
+    suspend fun searchMovie(@Query("query") query: String): MovieResponseModel
 
-    @GET("$SEARCH_TV_SERIE{query}$API_STR$API_KEY")
-    fun searchTvSerie(@Path("query") query: String): List<TvSeriesModel>
+    @GET("$SEARCH_TV_SERIE$API_STR$API_KEY")
+    suspend fun searchTvSerie(@Query("query") query: String): TvSeriesResponseModel
 }
