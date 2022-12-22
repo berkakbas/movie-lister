@@ -20,7 +20,7 @@ class TvSeriesViewModel : ViewModel() {
     fun fetchPopularTvSeries() {
         viewModelScope.launch {
             try {
-                val popularSeries = tvSeriesService.fetchPopularTvSeries()
+                val popularSeries = tvSeriesService.fetchPopularTvSeries().results
                 _popularSeriesList.emit(popularSeries)
             } catch (e: Exception) {
                 e.printStackTrace()
