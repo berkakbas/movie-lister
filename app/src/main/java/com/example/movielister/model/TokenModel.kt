@@ -1,10 +1,9 @@
 package com.example.movielister.model
 
-import kotlinx.serialization.Serializable
+import com.squareup.moshi.Json
 
-@Serializable
 data class TokenModel(
-    val success: Boolean,
-    val expires_at: String,
-    val request_token: String
+    @Json(name = "success") val success: Boolean,
+    @Json(name = "expires_at") val expires_at: String,
+    @Json(name = "request_token") val request_token: String
 )

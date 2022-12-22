@@ -1,9 +1,8 @@
 package com.example.movielister.model
 
-import kotlinx.serialization.Serializable
+import com.squareup.moshi.Json
 
-@Serializable
 data class SessionModel(
-    val success: Boolean,
-    val session_id: String
+    @Json(name = "success") val success: Boolean,
+    @Json(name = "session_id") val session_id: String
 )

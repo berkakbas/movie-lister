@@ -1,12 +1,11 @@
 package com.example.movielister.model
 
-import kotlinx.serialization.Serializable
+import com.squareup.moshi.Json
 
-@Serializable
 data class PersonModel(
-    val id: Int,
-    val title: String,
-    val gender: Int,
-    val biography: String,
-    val profile_path: String?
+    @Json(name = "id") val id: Int,
+    @Json(name = "title") val title: String,
+    @Json(name = "gender") val gender: Int,
+    @Json(name = "biography") val biography: String,
+    @Json(name = "profile_path") val profile_path: String?
 )
