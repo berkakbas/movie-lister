@@ -3,6 +3,7 @@ package com.example.movielister.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.movielister.data.MovieGenreHelper
 import com.example.movielister.databinding.MovieRowLayoutBinding
 import com.example.movielister.helper.HelperFunctions
 import com.example.movielister.model.MovieModel
@@ -21,6 +22,7 @@ class MovieListAdapter(private val movieList: List<MovieModel>) : RecyclerView.A
     override fun onBindViewHolder(holder: MovieHolder, position: Int) {
         val movie = movieList.get(position)
         holder.binding.movieName.text = movie.title
+        holder.binding.genreText.text = MovieGenreHelper.genreIdsToString(movie.genreIds)
         holder.binding.releaseDateText.text = HelperFunctions.organizeDate(movie.releaseDate)
         holder.binding.ratingText.text = movie.voteAverage.toString()
         Picasso.get().load(IMAGE_BASE_URL + movie.posterPath).into(holder.binding.movieImage)

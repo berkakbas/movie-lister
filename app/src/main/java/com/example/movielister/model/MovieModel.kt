@@ -9,5 +9,6 @@ data class MovieModel(
     @Json(name = "release_date") val releaseDate: String,
     @Json(name = "vote_average") val voteAverage: Float,
     @Json(name = "poster_path") val posterPath: String,
-    @Json(name = "backdrop_path") val backdrop_path: String?
+    @Json(name = "backdrop_path") val backdrop_path: String?,
+    @Json(name = "genre_ids") val genreIds: List<Int>
 )
