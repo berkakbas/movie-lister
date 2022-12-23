@@ -9,5 +9,5 @@ const val PERSON = "person/"
 
 interface PersonAPI {
     @GET("$PERSON{id}$API_STR$API_KEY")
-    fun fetchPersonInfo(@Path("id") id: Int): PersonModel
+    fun fetchPersonInfo(@Path("id") id: Int): PersonModel?
 }

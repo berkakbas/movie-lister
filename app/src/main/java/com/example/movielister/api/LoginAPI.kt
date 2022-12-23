@@ -13,11 +13,11 @@ const val AUTH_TOKEN_LOGIN = "authentication/token/validate_with_login/"
 
 interface LoginAPI {
     @GET(AUTH_TOKEN_NEW + API_STR + API_KEY)
-    fun createToken(): TokenModel
+    fun createToken(): TokenModel?
 
     @POST("$AUTH_SESSION_NEW{request_token}${API_STR}${API_KEY}")
-    fun createSession(@Path("request_token") token: String): SessionModel
+    fun createSession(@Path("request_token") token: String): SessionModel?
 
     @POST("${AUTH_TOKEN_LOGIN}{username}/{password}/{request_token}${API_STR}${API_KEY}")
-    fun createSessionWithLogin(@Path("username") username: String, @Path("password") password: String, @Path("request_token") token: String): TokenModel
+    fun createSessionWithLogin(@Path("username") username: String, @Path("password") password: String, @Path("request_token") token: String): TokenModel?
 }

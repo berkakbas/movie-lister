@@ -20,8 +20,10 @@ class TvSeriesViewModel : ViewModel() {
     fun fetchPopularTvSeries() {
         viewModelScope.launch {
             try {
-                val popularSeries = tvSeriesService.fetchPopularTvSeries().results
-                _popularSeriesList.emit(popularSeries)
+                tvSeriesService.fetchPopularTvSeries()?.let {
+                    val popularSeries = it.results
+                    _popularSeriesList.emit(popularSeries)
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -31,8 +33,10 @@ class TvSeriesViewModel : ViewModel() {
     fun fetchTvSerie(serieId: Int) {
         viewModelScope.launch {
             try {
-                val serie = tvSeriesService.fetchTvSerie(serieId)
-                _currentSerie.emit(serie)
+                tvSeriesService.fetchTvSerie(serieId)?.let {
+                    val serie = it
+                    _currentSerie.emit(serie)
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }

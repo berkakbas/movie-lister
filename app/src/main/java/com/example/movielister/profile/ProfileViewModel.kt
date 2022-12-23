@@ -17,8 +17,10 @@ class ProfileViewModel : ViewModel() {
     fun fetchPersonInfo(userId: Int) {
         viewModelScope.launch {
             try {
-                val user = personService.fetchPersonInfo(userId)
-                _currentUser.emit(user)
+                personService.fetchPersonInfo(userId)?.let {
+                    val user = it
+                    _currentUser.emit(user)
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }

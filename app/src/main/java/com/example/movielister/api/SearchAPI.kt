@@ -12,8 +12,8 @@ const val SEARCH_TV_SERIE = "search/tv/"
 
 interface SearchAPI {
     @GET("$SEARCH_MOVIE{query}$API_STR$API_KEY")
-    fun searchMovie(@Path("query") query: String): List<MovieModel>
+    fun searchMovie(@Path("query") query: String): List<MovieModel>?
 
     @GET("$SEARCH_TV_SERIE{query}$API_STR$API_KEY")
-    fun searchTvSerie(@Path("query") query: String): List<TvSeriesModel>
+    fun searchTvSerie(@Path("query") query: String): List<TvSeriesModel>?
 }

@@ -12,8 +12,8 @@ const val TV = "tv/"
 
 interface TvSeriesAPI {
     @GET(POPULAR_TV + API_STR + API_KEY)
-    suspend fun fetchPopularTvSeries(): TvSeriesResponseModel
+    suspend fun fetchPopularTvSeries(): TvSeriesResponseModel?
 
     @GET("$TV{id}$API_STR$API_KEY")
-    suspend fun fetchTvSerie(@Path("id") tvId: Int): TvSeriesModel
+    suspend fun fetchTvSerie(@Path("id") tvId: Int): TvSeriesModel?
 }

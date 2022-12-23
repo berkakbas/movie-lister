@@ -24,8 +24,10 @@ class LoginViewModel : ViewModel() {
     fun createToken() {
         viewModelScope.launch {
             try {
-                val token = loginService.createToken()
-                _token.emit(token)
+                loginService.createToken()?.let {
+                    val token = it
+                    _token.emit(token)
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -35,8 +37,10 @@ class LoginViewModel : ViewModel() {
     fun createSession(token: String) {
         viewModelScope.launch {
             try {
-                val sessionModel = loginService.createSession(token)
-                _sessionModel.emit(sessionModel)
+                loginService.createSession(token)?.let {
+                    val sessionModel = it
+                    _sessionModel.emit(sessionModel)
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -46,8 +50,10 @@ class LoginViewModel : ViewModel() {
     fun createSessionWithLogin(username: String, password: String, token: String) {
         viewModelScope.launch {
             try {
-                val loginToken = loginService.createSessionWithLogin(username, password, token)
-                _loginToken.emit(loginToken)
+                loginService.createSessionWithLogin(username, password, token)?.let {
+                    val loginToken = it
+                    _loginToken.emit(loginToken)
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
