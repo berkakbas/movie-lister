@@ -8,5 +8,6 @@ data class TvSeriesModel(
     @Json(name = "overview") val overview: String,
     @Json(name = "poster_path") val posterPath: String?,
     @Json(name = "backdrop_path") val backdrop_path: String?,
-    @Json(name = "vote_average") val voteAverage: Float
+    @Json(name = "vote_average") val voteAverage: Float,
+    val imageUrl: String = "https://image.tmdb.org/t/p/original/"
 )

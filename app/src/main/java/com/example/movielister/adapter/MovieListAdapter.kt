@@ -10,8 +10,6 @@ import com.example.movielister.model.MovieModel
 import com.squareup.picasso.Picasso
 
 class MovieListAdapter(private val movieList: List<MovieModel>) : RecyclerView.Adapter<MovieListAdapter.MovieHolder>() {
-    val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original/"
-
     class MovieHolder(val binding: MovieRowLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder {
@@ -25,7 +23,7 @@ class MovieListAdapter(private val movieList: List<MovieModel>) : RecyclerView.A
         holder.binding.genreText.text = MovieGenreHelper.genreIdsToString(movie.genreIds)
         holder.binding.releaseDateText.text = HelperFunctions.organizeDate(movie.releaseDate)
         holder.binding.ratingText.text = movie.voteAverage.toString()
-        Picasso.get().load(IMAGE_BASE_URL + movie.posterPath).into(holder.binding.movieImage)
+        Picasso.get().load(movie.imageUrl + movie.posterPath).into(holder.binding.movieImage)
         holder.itemView.setOnClickListener {
             /*
             val intent = Intent(holder.itemView.context, MovieDetailsActivity::class.java)
