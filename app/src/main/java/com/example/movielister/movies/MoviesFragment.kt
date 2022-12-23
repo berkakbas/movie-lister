@@ -10,14 +10,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movielister.adapter.MovieListAdapter
 import com.example.movielister.databinding.FragmentMoviesBinding
-import com.example.movielister.model.MovieModel
 
 class MoviesFragment : Fragment() {
     private var _binding: FragmentMoviesBinding? = null
     private val binding get() = _binding!!
 
     private val moviesViewModel by lazy { ViewModelProvider(requireActivity())[MoviesViewModel::class.java] }
-    lateinit var selectedMovie: MovieModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +38,6 @@ class MoviesFragment : Fragment() {
         }
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             moviesViewModel.currentMovie.collect { currentMovie ->
-                selectedMovie = currentMovie
             }
         }
 

@@ -10,14 +10,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.movielister.adapter.TvSeriesAdapter
 import com.example.movielister.databinding.FragmentTvSeriesBinding
-import com.example.movielister.model.TvSeriesModel
 
 class TvSeriesFragment : Fragment() {
     private var _binding: FragmentTvSeriesBinding? = null
     private val binding get() = _binding!!
 
     private val seriesViewModel by lazy { ViewModelProvider(requireActivity())[TvSeriesViewModel::class.java] }
-    lateinit var selectedSerie: TvSeriesModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +37,6 @@ class TvSeriesFragment : Fragment() {
         }
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             seriesViewModel.currentSerie.collect { currentSerie ->
-                selectedSerie = currentSerie
             }
         }
 
