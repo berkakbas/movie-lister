@@ -19,26 +19,26 @@ class MoviesViewModel() : ViewModel() {
 
     fun fetchPopularMovies() {
         viewModelScope.launch {
-            try {
+            runCatching {
                 moviesService.fetchPopularMovies()?.let {
                     val popularMovies = it.results
                     _popularMoviesList.emit(popularMovies)
                 }
-            } catch (e: Exception) {
-                e.printStackTrace()
+            }.onFailure {
+                it.printStackTrace()
             }
         }
     }
 
     fun fetchMovie(movieID: Int) {
         viewModelScope.launch {
-            try {
+            runCatching {
                 moviesService.fetchMovie(movieID)?.let {
                     val movie = it
                     _currentMovie.emit(movie)
                 }
-            } catch (e: Exception) {
-                e.printStackTrace()
+            }.onFailure {
+                it.printStackTrace()
             }
         }
     }
