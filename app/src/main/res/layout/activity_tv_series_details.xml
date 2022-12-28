@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".movies.MovieDetailsActivity">
+    tools:context=".tvseries.TvSeriesDetailsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             app:toolbarId="@id/toolbar">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/movieImage"
+                android:id="@+id/seriesImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/ratingText"
+                android:id="@+id/seriesRatingText"
                 style="@style/SeriesRatingTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,48 +61,48 @@
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/movieTitle"
+                android:id="@+id/seriesTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/ratingText"
-                app:layout_constraintStart_toEndOf="@+id/ratingText"
-                app:layout_constraintTop_toTopOf="@+id/ratingText" />
+                app:layout_constraintBottom_toBottomOf="@+id/seriesRatingText"
+                app:layout_constraintStart_toEndOf="@+id/seriesRatingText"
+                app:layout_constraintTop_toTopOf="@+id/seriesRatingText" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/genreText"
+                android:id="@+id/seriesGenreText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:textColor="@color/black"
                 android:textSize="11sp"
-                app:layout_constraintStart_toStartOf="@+id/ratingText"
-                app:layout_constraintTop_toBottomOf="@+id/ratingText">
+                app:layout_constraintStart_toStartOf="@+id/seriesRatingText"
+                app:layout_constraintTop_toBottomOf="@+id/seriesRatingText">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/durationText"
+                android:id="@+id/seriesDurationText"
                 style="@style/DurationTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:layout_constraintStart_toStartOf="@+id/genreText"
-                app:layout_constraintTop_toBottomOf="@+id/genreText">
+                app:layout_constraintStart_toStartOf="@+id/seriesGenreText"
+                app:layout_constraintTop_toBottomOf="@+id/seriesGenreText">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/dateText"
+                android:id="@+id/seriesDateText"
                 style="@style/ReleaseDateTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="12dp"
-                app:layout_constraintStart_toEndOf="@+id/durationText"
-                app:layout_constraintTop_toBottomOf="@+id/genreText">
+                app:layout_constraintStart_toEndOf="@+id/seriesDurationText"
+                app:layout_constraintTop_toBottomOf="@+id/seriesGenreText">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
@@ -116,12 +116,12 @@
                 android:background="@color/soft_grey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/durationText">
+                app:layout_constraintTop_toBottomOf="@+id/seriesDurationText">
 
             </View>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/descriptionText"
+                android:id="@+id/seriesDescriptionText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -129,86 +129,34 @@
                 android:layout_marginEnd="24dp"
                 android:textColor="@color/black"
                 android:textSize="11sp"
-                app:layout_constraintStart_toStartOf="@+id/durationText"
+                app:layout_constraintStart_toStartOf="@+id/seriesDurationText"
                 app:layout_constraintTop_toBottomOf="@+id/line">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/directorTitle"
+                android:id="@+id/creatorTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="@string/director"
+                android:text="@string/creators"
                 android:textColor="@color/black"
                 android:textSize="11sp"
-                app:layout_constraintStart_toStartOf="@+id/ratingText"
-                app:layout_constraintTop_toBottomOf="@+id/descriptionText">
+                app:layout_constraintStart_toStartOf="@+id/seriesRatingText"
+                app:layout_constraintTop_toBottomOf="@+id/seriesDescriptionText">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/directorText"
+                android:id="@+id/creatorText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:layout_marginTop="24dp"
                 android:textColor="@color/electric_blue"
                 android:textSize="11sp"
-                app:layout_constraintStart_toEndOf="@+id/directorTitle"
-                app:layout_constraintTop_toBottomOf="@+id/descriptionText">
-
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/writersTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/writers"
-                android:textColor="@color/black"
-                android:textSize="11sp"
-                app:layout_constraintStart_toStartOf="@+id/ratingText"
-                app:layout_constraintTop_toBottomOf="@+id/directorTitle">
-
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/writersText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:textColor="@color/electric_blue"
-                android:textSize="11sp"
-                app:layout_constraintBottom_toBottomOf="@+id/writersTitle"
-                app:layout_constraintStart_toEndOf="@+id/writersTitle"
-                app:layout_constraintTop_toTopOf="@+id/writersTitle">
-
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/starsTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/stars"
-                android:textColor="@color/black"
-                android:textSize="11sp"
-                app:layout_constraintStart_toStartOf="@+id/ratingText"
-                app:layout_constraintTop_toBottomOf="@+id/writersTitle">
-
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/starsText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:textColor="@color/electric_blue"
-                android:textSize="11sp"
-                app:layout_constraintBottom_toBottomOf="@+id/starsTitle"
-                app:layout_constraintStart_toEndOf="@+id/starsTitle"
-                app:layout_constraintTop_toTopOf="@+id/starsTitle">
+                app:layout_constraintStart_toEndOf="@+id/creatorTitle"
+                app:layout_constraintTop_toBottomOf="@+id/seriesDescriptionText">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
