@@ -21,6 +21,7 @@
             app:toolbarId="@id/toolbar">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/movieImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
@@ -55,7 +56,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
-                android:text="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -66,7 +66,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Title"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/ratingText"
@@ -78,7 +77,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Genres"
                 android:textColor="@color/black"
                 android:textSize="11sp"
                 app:layout_constraintStart_toStartOf="@+id/ratingText"
@@ -112,10 +110,10 @@
             <View
                 android:id="@+id/line"
                 android:layout_width="match_parent"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
                 android:layout_height="2dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
                 android:background="@color/soft_grey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -125,12 +123,13 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/descriptionText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Great Movie"
-                android:textSize="11sp"
-                android:textColor="@color/black"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:textColor="@color/black"
+                android:textSize="11sp"
                 app:layout_constraintStart_toStartOf="@+id/durationText"
                 app:layout_constraintTop_toBottomOf="@+id/line">
 
@@ -138,13 +137,13 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/directorTitle"
-                android:text="@string/director"
-                android:textSize="11sp"
-                android:layout_marginTop="24dp"
-                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@+id/descriptionText"
+                android:layout_marginTop="24dp"
+                android:text="@string/director"
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="@+id/ratingText"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionText">
 
             </androidx.appcompat.widget.AppCompatTextView>
@@ -155,7 +154,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:layout_marginTop="24dp"
-                android:text="Director Name"
                 android:textColor="@color/electric_blue"
                 android:textSize="11sp"
                 app:layout_constraintStart_toEndOf="@+id/directorTitle"
@@ -165,13 +163,13 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/writersTitle"
-                android:text="@string/writers"
-                android:textSize="11sp"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@+id/descriptionText"
+                android:layout_marginTop="10dp"
+                android:text="@string/writers"
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="@+id/ratingText"
                 app:layout_constraintTop_toBottomOf="@+id/directorTitle">
 
             </androidx.appcompat.widget.AppCompatTextView>
@@ -181,7 +179,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
-                android:text="Writer Name"
                 android:textColor="@color/electric_blue"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="@+id/writersTitle"
@@ -192,13 +189,13 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/starsTitle"
-                android:text="@string/stars"
-                android:textSize="11sp"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@+id/descriptionText"
+                android:layout_marginTop="10dp"
+                android:text="@string/stars"
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="@+id/ratingText"
                 app:layout_constraintTop_toBottomOf="@+id/writersTitle">
 
             </androidx.appcompat.widget.AppCompatTextView>
@@ -208,7 +205,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
-                android:text="Star Name"
                 android:textColor="@color/electric_blue"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="@+id/starsTitle"
