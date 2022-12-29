@@ -1,8 +1,6 @@
 package com.example.movielister.search
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movielister.adapter.MovieListAdapter
 import com.example.movielister.databinding.FragmentSearchBinding
+import com.jakewharton.rxbinding3.widget.textChanges
+import java.util.concurrent.TimeUnit
+
 
 class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
@@ -42,16 +43,11 @@ class SearchFragment : Fragment() {
     }
 
     private fun bindTextListener() {
-        binding.searchEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable) {
+        binding.searchEditText.textChanges()
+            .throttleFirst(500, TimeUnit.MILLISECONDS)
+            .subscribe { charSequence ->
+                searchViewModel.searchMovie(charSequence.toString())
             }
-
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                searchViewModel.searchMovie(s.toString())
-            }
-        })
     }
+
 }
