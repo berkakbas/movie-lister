@@ -1,13 +1,14 @@
 package com.example.movielister.profile
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.movielister.R
 import com.example.movielister.databinding.FragmentProfileBinding
+import com.example.movielister.main.MainActivity
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
@@ -21,7 +22,14 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.loginButton.setOnClickListener {
-            findNavController().navigate(R.id.action_LoginFragment_to_ProfileFragment)
+            loadLoginFragment()
+        }
+    }
+
+    private fun loadLoginFragment() {
+        requireActivity().supportFragmentManager.beginTransaction().apply {
+            replace(R.id.loginContainerView, LoginFragment())
+            commit()
         }
     }
 }
