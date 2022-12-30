@@ -72,7 +72,9 @@
                 android:background="@color/dark_grey"
                 app:layout_constraintBottom_toBottomOf="@+id/releaseDateText"
                 app:layout_constraintStart_toEndOf="@+id/releaseDateText"
-                app:layout_constraintTop_toTopOf="@+id/releaseDateText"></View>
+                app:layout_constraintTop_toTopOf="@+id/releaseDateText">
+
+            </View>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/ratingText"
@@ -83,7 +85,9 @@
                 android:text="0.0"
                 app:layout_constraintBottom_toBottomOf="@+id/releaseDateText"
                 app:layout_constraintStart_toEndOf="@+id/line"
-                app:layout_constraintTop_toTopOf="@+id/releaseDateText"></androidx.appcompat.widget.AppCompatTextView>
+                app:layout_constraintTop_toTopOf="@+id/releaseDateText">
+
+            </androidx.appcompat.widget.AppCompatTextView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
