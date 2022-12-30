@@ -27,9 +27,6 @@ class ProfileFragment : Fragment() {
     }
 
     private fun loadLoginFragment() {
-        requireActivity().supportFragmentManager.beginTransaction().apply {
-            replace(R.id.loginContainerView, LoginFragment())
-            commit()
-        }
+        (requireActivity() as MainActivity).loadLoginScreen()
     }
 }
