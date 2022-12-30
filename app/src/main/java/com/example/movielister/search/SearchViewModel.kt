@@ -21,10 +21,8 @@ class SearchViewModel : ViewModel() {
     fun searchMovie(query: String) {
         viewModelScope.launch {
             try {
-                searchService.searchMovie(query)?.let {
-                    val movies = it
-                    _movieResults.emit(movies)
-                }
+                val movies = searchService.searchMovie(query)
+                _movieResults.emit(movies.results)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -34,10 +32,8 @@ class SearchViewModel : ViewModel() {
     fun searchTvSeries(query: String) {
         viewModelScope.launch {
             try {
-                searchService.searchTvSerie(query)?.let {
-                    val series = it
-                    _seriesResults.emit(series)
-                }
+                val series = searchService.searchTvSerie(query)
+                _seriesResults.emit(series.results)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
