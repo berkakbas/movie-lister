@@ -1,8 +1,10 @@
 package com.example.movielister.api
 
-import com.example.movielister.BuildConfig.*
+import com.example.movielister.BuildConfig.API_KEY
+import com.example.movielister.BuildConfig.API_STR
 import com.example.movielister.model.SessionModel
 import com.example.movielister.model.TokenModel
+import com.example.movielister.network.WebService
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -20,4 +22,8 @@ interface LoginAPI {
 
     @POST("${AUTH_TOKEN_LOGIN}{username}/{password}/{request_token}${API_STR}${API_KEY}")
     fun createSessionWithLogin(@Path("username") username: String, @Path("password") password: String, @Path("request_token") token: String): TokenModel?
+}
+
+object LoginNetwork {
+    val loginService: LoginAPI = WebService.createRetrofit().create(LoginAPI::class.java)
 }

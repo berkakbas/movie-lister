@@ -2,25 +2,19 @@ package com.example.movielister.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.movielister.model.PersonModel
-import com.example.movielister.network.PersonNetwork
-import kotlinx.coroutines.flow.MutableSharedFlow
+import com.example.movielister.repository.ProfileRepository
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 
 class ProfileViewModel : ViewModel() {
-    private val personService = PersonNetwork.createPersonAPI()
+    private val profileRepository = ProfileRepository()
 
-    private val _currentUser = MutableSharedFlow<PersonModel>()
-    val currentUser = _currentUser.asSharedFlow()
+    val currentUser = profileRepository._currentUser.asSharedFlow()
 
     fun fetchPersonInfo(userId: Int) {
         viewModelScope.launch {
             try {
-                personService.fetchPersonInfo(userId)?.let {
-                    val user = it
-                    _currentUser.emit(user)
-                }
+                profileRepository.fetchPersonInfo(userId)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
