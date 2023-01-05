@@ -1,14 +1,13 @@
 package com.example.movielister.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.example.movielister.R
 import com.example.movielister.databinding.FragmentProfileBinding
-import com.example.movielister.main.MainActivity
+import com.example.movielister.login.LoginActivity
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
@@ -27,6 +26,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun loadLoginFragment() {
-        (requireActivity() as MainActivity).loadLoginScreen()
+        val intent = Intent(requireContext(), LoginActivity::class.java)
+        startActivity(intent)
     }
 }

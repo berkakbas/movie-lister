@@ -8,7 +8,6 @@ import com.example.movielister.R
 import com.example.movielister.databinding.ActivityMainBinding
 import com.example.movielister.factory.BasicFragmentFactory
 import com.example.movielister.movies.MoviesFragment
-import com.example.movielister.profile.LoginFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -30,14 +29,6 @@ class MainActivity : AppCompatActivity() {
     private fun setCurrentFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.flFragment, fragment)
-            commit()
-        }
-    }
-
-    fun loadLoginScreen() {
-        binding.bottomNavigationView.visibility = View.GONE
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.loginContainerView, LoginFragment())
             commit()
         }
     }
