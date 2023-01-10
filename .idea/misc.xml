@@ -15,6 +15,7 @@
         <entry key="app/src/main/res/drawable/rating_card_bg.xml" value="0.149" />
         <entry key="app/src/main/res/drawable/smooth_button.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/white_smooth_button.xml" value="0.166" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.16354166666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2292576419213974" />
         <entry key="app/src/main/res/layout/activity_movie_details.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_tv_series_details.xml" value="0.28229166666666666" />

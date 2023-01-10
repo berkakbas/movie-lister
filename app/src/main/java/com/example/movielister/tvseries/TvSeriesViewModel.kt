@@ -2,28 +2,21 @@ package com.example.movielister.tvseries
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.movielister.model.TvSeriesModel
-import com.example.movielister.network.TvSeriesNetwork
-import kotlinx.coroutines.flow.MutableSharedFlow
+import com.example.movielister.repository.TvSeriesRepository
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 
 class TvSeriesViewModel : ViewModel() {
-    private val tvSeriesService = TvSeriesNetwork.createTvSeriesAPI()
+    private val tvSeriesRepository = TvSeriesRepository()
 
-    private val _popularSeriesList = MutableSharedFlow<List<TvSeriesModel>>()
-    val popularSeriesList = _popularSeriesList.asSharedFlow()
+    val popularSeriesList = tvSeriesRepository._popularSeriesList.asSharedFlow()
 
-    private val _currentSerie = MutableSharedFlow<TvSeriesModel>()
-    val currentSerie = _currentSerie.asSharedFlow()
+    val currentSerie = tvSeriesRepository._currentSerie.asSharedFlow()
 
     fun fetchPopularTvSeries() {
         viewModelScope.launch {
             runCatching {
-                tvSeriesService.fetchPopularTvSeries()?.let {
-                    val popularSeries = it.results
-                    _popularSeriesList.emit(popularSeries)
-                }
+                tvSeriesRepository.fetchPopularTvSeries()
             }.onFailure {
                 it.printStackTrace()
             }
@@ -33,10 +26,7 @@ class TvSeriesViewModel : ViewModel() {
     fun fetchTvSerie(serieId: Int) {
         viewModelScope.launch {
             runCatching {
-                tvSeriesService.fetchTvSerie(serieId)?.let {
-                    val serie = it
-                    _currentSerie.emit(serie)
-                }
+                tvSeriesRepository.fetchTvSerie(serieId)
             }.onFailure {
                 it.printStackTrace()
             }

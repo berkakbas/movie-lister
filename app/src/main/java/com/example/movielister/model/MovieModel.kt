@@ -1,7 +1,10 @@
 package com.example.movielister.model
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
+import java.io.Serializable
 
+@JsonClass(generateAdapter = true)
 data class MovieModel(
     @Json(name = "id") val id: Int,
     @Json(name = "title") val title: String,
@@ -12,4 +15,4 @@ data class MovieModel(
     @Json(name = "backdrop_path") val backdrop_path: String?,
     @Json(name = "genre_ids") val genreIds: List<Int>,
     val imageUrl: String = "https://image.tmdb.org/t/p/original/"
-)
+) : Serializable
