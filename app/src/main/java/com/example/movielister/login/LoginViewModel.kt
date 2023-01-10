@@ -9,11 +9,11 @@ import kotlinx.coroutines.launch
 class LoginViewModel : ViewModel() {
     private val loginRepository = LoginRepository()
 
-    val token = loginRepository._token.asSharedFlow()
+    val token = loginRepository.token
 
-    val sessionModel = loginRepository._sessionModel.asSharedFlow()
+    var sessionModel = loginRepository._sessionModel?.asSharedFlow()
 
-    val loginToken = loginRepository._loginToken.asSharedFlow()
+    var loginToken = loginRepository._loginToken?.asSharedFlow()
 
     fun createToken() {
         viewModelScope.launch {
