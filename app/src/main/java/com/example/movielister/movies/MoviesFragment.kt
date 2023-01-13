@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,12 +31,22 @@ class MoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         moviesViewModel.fetchPopularMovies()
 
+        /*
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             moviesViewModel.popularMoviesList.collect { popularList ->
                 binding.moviesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
                 binding.moviesRecyclerView.adapter = MovieListAdapter(popularList)
             }
         }
+         */
+
+        moviesViewModel.popularMoviesList.observe(viewLifecycleOwner, Observer {popularList ->
+            popularList?.let {
+                binding.moviesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+                binding.moviesRecyclerView.adapter = MovieListAdapter(popularList)
+            }
+        })
+
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             moviesViewModel.currentMovie.collect { currentMovie ->
             }
