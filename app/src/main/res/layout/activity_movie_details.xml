@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:textColor="@color/black"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/ratingText"
                 app:layout_constraintTop_toBottomOf="@+id/ratingText">
 
@@ -128,7 +128,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="24dp"
                 android:textColor="@color/black"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/durationText"
                 app:layout_constraintTop_toBottomOf="@+id/line">
 
@@ -141,7 +141,7 @@
                 android:layout_marginTop="24dp"
                 android:text="@string/director"
                 android:textColor="@color/black"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/ratingText"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionText">
 
@@ -167,7 +167,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/writers"
                 android:textColor="@color/black"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/ratingText"
                 app:layout_constraintTop_toBottomOf="@+id/directorTitle">
 
@@ -193,7 +193,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/stars"
                 android:textColor="@color/black"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/ratingText"
                 app:layout_constraintTop_toBottomOf="@+id/writersTitle">
 
