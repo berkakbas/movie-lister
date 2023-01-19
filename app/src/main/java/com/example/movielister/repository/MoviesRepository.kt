@@ -4,8 +4,9 @@ import com.example.movielister.api.MoviesNetwork
 import com.example.movielister.model.MovieCreditsModel
 import com.example.movielister.model.MovieModel
 import kotlinx.coroutines.flow.MutableSharedFlow
+import javax.inject.Inject
 
-class MoviesRepository {
+class MoviesRepository @Inject constructor() {
     val _popularMoviesList = MutableSharedFlow<List<MovieModel>>()
 
     val _currentMovie = MutableSharedFlow<MovieModel>()

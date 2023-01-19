@@ -5,17 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movielister.adapter.MovieListAdapter
 import com.example.movielister.databinding.FragmentMoviesBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MoviesFragment : Fragment() {
     private var _binding: FragmentMoviesBinding? = null
     private val binding get() = _binding!!
 
-    private val moviesViewModel by lazy { ViewModelProvider(requireActivity())[MoviesViewModel::class.java] }
+    private val moviesViewModel: MoviesViewModel by viewModels { MoviesViewModel.Factory }
+    /*
+    @Inject
+    lateinit var moviesViewModel: MoviesViewModel
+     */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
