@@ -8,6 +8,7 @@ import com.example.movielister.data.MovieGenreHelper
 import com.example.movielister.databinding.ActivityMovieDetailsBinding
 import com.example.movielister.helper.HelperFunctions
 import com.example.movielister.model.MovieModel
+import com.example.movielister.util.organizeDate
 import com.squareup.picasso.Picasso
 
 class MovieDetailsActivity : AppCompatActivity() {
@@ -30,7 +31,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         binding.ratingText.text = movie.voteAverage.toString()
         binding.movieTitle.text = movie.title
         binding.genreText.text = MovieGenreHelper.genreIdsToString(movie.genreIds)
-        binding.dateText.text = HelperFunctions.organizeDate(movie.releaseDate)
+        binding.dateText.text = movie.releaseDate.organizeDate()
         binding.descriptionText.text = movie.overview
 
         lifecycleScope.launchWhenStarted {
