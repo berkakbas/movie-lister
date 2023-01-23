@@ -19,11 +19,11 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.createToken()
 
         lifecycleScope.launchWhenStarted {
-            loginViewModel.loginToken?.collect {
+            loginViewModel.loginToken.collect {
                 if (it.success) {
-                    Toast.makeText(this@LoginActivity, "Success", Toast.LENGTH_LONG)
+                    Toast.makeText(this@LoginActivity, "Success", Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(this@LoginActivity, "Fail", Toast.LENGTH_LONG)
+                    Toast.makeText(this@LoginActivity, "Fail", Toast.LENGTH_LONG).show()
                 }
             }
         }

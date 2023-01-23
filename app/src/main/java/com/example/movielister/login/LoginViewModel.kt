@@ -13,7 +13,7 @@ class LoginViewModel : ViewModel() {
 
     var sessionModel = loginRepository._sessionModel?.asSharedFlow()
 
-    var loginToken = loginRepository._loginToken?.asSharedFlow()
+    var loginToken = loginRepository._loginToken.asSharedFlow()
 
     fun createToken() {
         viewModelScope.launch {
