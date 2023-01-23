@@ -9,6 +9,7 @@ import com.example.movielister.databinding.MovieRowLayoutBinding
 import com.example.movielister.helper.HelperFunctions
 import com.example.movielister.model.MovieModel
 import com.example.movielister.movies.MovieDetailsActivity
+import com.example.movielister.util.organizeDate
 import com.squareup.picasso.Picasso
 
 class MovieListAdapter(private val movieList: List<MovieModel>) : RecyclerView.Adapter<MovieListAdapter.MovieHolder>() {
@@ -23,7 +24,7 @@ class MovieListAdapter(private val movieList: List<MovieModel>) : RecyclerView.A
         val movie = movieList.get(position)
         holder.binding.movieName.text = movie.title
         holder.binding.genreText.text = MovieGenreHelper.genreIdsToString(movie.genreIds)
-        holder.binding.releaseDateText.text = HelperFunctions.organizeDate(movie.releaseDate)
+        holder.binding.releaseDateText.text = movie.releaseDate.organizeDate()
         holder.binding.ratingText.text = movie.voteAverage.toString()
         Picasso.get().load(movie.imageUrl + movie.posterPath).into(holder.binding.movieImage)
         holder.itemView.setOnClickListener {
