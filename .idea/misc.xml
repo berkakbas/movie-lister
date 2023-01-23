@@ -9,15 +9,20 @@
         <entry key="app/src/main/res/drawable/ic_clock_blue.xml" value="0.214" />
         <entry key="app/src/main/res/drawable/ic_movee.xml" value="0.2535" />
         <entry key="app/src/main/res/drawable/ic_movie_white.xml" value="0.1805" />
+        <entry key="app/src/main/res/drawable/ic_oscar_award.xml" value="0.198" />
         <entry key="app/src/main/res/drawable/ic_star_white.xml" value="0.149" />
         <entry key="app/src/main/res/drawable/ic_star_white_small.xml" value="0.149" />
         <entry key="app/src/main/res/drawable/movie_cardview.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/rating_card_bg.xml" value="0.149" />
         <entry key="app/src/main/res/drawable/smooth_button.xml" value="0.285" />
+        <entry key="app/src/main/res/drawable/splach_bg.xml" value="0.198" />
+        <entry key="app/src/main/res/drawable/splash_bg.xml" value="0.198" />
         <entry key="app/src/main/res/drawable/white_smooth_button.xml" value="0.166" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.16354166666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2292576419213974" />
         <entry key="app/src/main/res/layout/activity_movie_details.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_tv_series_details.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.17592592592592593" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_movies.xml" value="0.25" />

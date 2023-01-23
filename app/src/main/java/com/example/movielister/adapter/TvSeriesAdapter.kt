@@ -1,10 +1,12 @@
 package com.example.movielister.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movielister.databinding.SeriesRowLayoutBinding
 import com.example.movielister.model.TvSeriesModel
+import com.example.movielister.tvseries.TvSeriesDetailsActivity
 import com.squareup.picasso.Picasso
 
 class TvSeriesAdapter(private val seriesList: List<TvSeriesModel>) : RecyclerView.Adapter<TvSeriesAdapter.TvSeriesHolder>() {
@@ -21,11 +23,9 @@ class TvSeriesAdapter(private val seriesList: List<TvSeriesModel>) : RecyclerVie
         holder.binding.ratingText.text = series.voteAverage.toString()
         Picasso.get().load(series.imageUrl + series.posterPath).into(holder.binding.seriesImage)
         holder.itemView.setOnClickListener {
-            /*
-            val intent = Intent(holder.itemView.context,TvSeriesDetailsActivity::class.java)
-            intent.putExtra("series_id", seriesList.get(position).id)
+            val intent = Intent(holder.itemView.context, TvSeriesDetailsActivity::class.java)
+            intent.putExtra("series", seriesList.get(position))
             holder.itemView.context.startActivity(intent)
-             */
         }
     }
 
