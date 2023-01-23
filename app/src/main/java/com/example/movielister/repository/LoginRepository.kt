@@ -13,7 +13,7 @@ class LoginRepository {
 
     var _sessionModel: MutableSharedFlow<SessionModel>? = null
 
-    var _loginToken: MutableSharedFlow<TokenModel>? = null
+    var _loginToken = MutableSharedFlow<TokenModel>()
 
     suspend fun createToken() {
         LoginNetwork.loginService.createToken()?.let {
@@ -31,7 +31,7 @@ class LoginRepository {
     suspend fun createSessionWithLogin(username: String, password: String, token: String) {
         LoginNetwork.loginService.createSessionWithLogin(username, password, token)?.let {
             val loginToken = it
-            _loginToken?.emit(loginToken)
+            _loginToken.emit(loginToken)
         }
     }
 }
