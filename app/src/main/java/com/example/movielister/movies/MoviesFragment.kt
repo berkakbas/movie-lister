@@ -17,7 +17,7 @@ class MoviesFragment : Fragment() {
     private var _binding: FragmentMoviesBinding? = null
     private val binding get() = _binding!!
 
-    private val moviesViewModel: MoviesViewModel by viewModels { MoviesViewModel.Factory }
+    private val moviesViewModel by viewModels<MoviesViewModel>()
     /*
     @Inject
     lateinit var moviesViewModel: MoviesViewModel

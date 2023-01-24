@@ -6,10 +6,12 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.movielister.repository.MoviesRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class MoviesViewModel
 @Inject
 constructor(private val moviesRepository: MoviesRepository) : ViewModel() {
@@ -34,15 +36,6 @@ constructor(private val moviesRepository: MoviesRepository) : ViewModel() {
                 moviesRepository.fetchMovie(movieID)
             }.onFailure {
                 it.printStackTrace()
-            }
-        }
-    }
-
-    companion object {
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                val moviesRepository = MoviesRepository()
-                MoviesViewModel(moviesRepository = moviesRepository)
             }
         }
     }
