@@ -1,6 +1,7 @@
 package com.example.movielister.movies
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,14 +19,6 @@ class MoviesFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val moviesViewModel by viewModels<MoviesViewModel>()
-    /*
-    @Inject
-    lateinit var moviesViewModel: MoviesViewModel
-     */
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentMoviesBinding.inflate(inflater, container, false)
@@ -38,6 +31,7 @@ class MoviesFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             moviesViewModel.popularMoviesList.collect { popularList ->
+                Log.d("xxx 0", popularList.size.toString())
                 binding.moviesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
                 binding.moviesRecyclerView.adapter = MovieListAdapter(popularList)
             }
