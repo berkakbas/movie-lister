@@ -1,5 +1,6 @@
 package com.example.movielister.movies
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -23,8 +24,10 @@ constructor(private val moviesRepository: MoviesRepository) : ViewModel() {
     fun fetchPopularMovies() {
         viewModelScope.launch {
             runCatching {
+                Log.d("xxx 1", "run")
                 moviesRepository.fetchPopularMovies()
             }.onFailure {
+                Log.d("xxx 2", it.toString())
                 it.printStackTrace()
             }
         }

@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.movielister.data.MovieGenreHelper
 import com.example.movielister.databinding.ActivityMovieDetailsBinding
-import com.example.movielister.helper.HelperFunctions
 import com.example.movielister.model.MovieModel
 import com.example.movielister.util.organizeDate
 import com.squareup.picasso.Picasso
@@ -25,13 +24,17 @@ class MovieDetailsActivity : AppCompatActivity() {
         val intent = intent
         val movie = intent.getSerializableExtra("movie") as MovieModel
 
-        movieDetailsViewModel.fetchCredits(movie.id)
+        movie.id?.let {
+            movieDetailsViewModel.fetchCredits(it)
+        }
 
-        Picasso.get().load(movie.imageUrl + movie.posterPath).into(binding.movieImage)
-        binding.ratingText.text = movie.voteAverage.toString()
+        Picasso.get().load(movie.imageUrl + movie.poster_path).into(binding.movieImage)
+        binding.ratingText.text = movie.vote_average.toString()
         binding.movieTitle.text = movie.title
-        binding.genreText.text = MovieGenreHelper.genreIdsToString(movie.genreIds)
-        binding.dateText.text = movie.releaseDate.organizeDate()
+        movie.genre_ids?.let {
+            binding.genreText.text = MovieGenreHelper.genreIdsToString(it)
+        }
+        binding.dateText.text = movie.release_date?.organizeDate()
         binding.descriptionText.text = movie.overview
 
         lifecycleScope.launchWhenStarted {
