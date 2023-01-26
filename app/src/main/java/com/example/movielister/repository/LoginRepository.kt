@@ -11,7 +11,11 @@ class LoginRepository {
         MutableLiveData<TokenModel>()
     }
 
-    var _sessionModel: MutableSharedFlow<SessionModel>? = null
+    val sessionId: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
+    var _sessionModel = MutableSharedFlow<SessionModel>()
 
     var _loginToken = MutableSharedFlow<TokenModel>()
 
@@ -24,7 +28,7 @@ class LoginRepository {
     suspend fun createSession(token: String) {
         LoginNetwork.loginService.createSession(token)?.let {
             val sessionModel = it
-            _sessionModel?.emit(sessionModel)
+            _sessionModel.emit(sessionModel)
         }
     }
 

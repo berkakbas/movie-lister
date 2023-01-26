@@ -2,6 +2,7 @@ package com.example.movielister.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.movielister.model.TokenModel
 import com.example.movielister.repository.LoginRepository
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
@@ -11,7 +12,9 @@ class LoginViewModel : ViewModel() {
 
     val token = loginRepository.token
 
-    var sessionModel = loginRepository._sessionModel?.asSharedFlow()
+    val sessionId = loginRepository.sessionId
+
+    var sessionModel = loginRepository._sessionModel.asSharedFlow()
 
     var loginToken = loginRepository._loginToken.asSharedFlow()
 
@@ -40,6 +43,8 @@ class LoginViewModel : ViewModel() {
             try {
                 loginRepository.createSessionWithLogin(username, password, token)
             } catch (e: Exception) {
+                val failedToken = TokenModel(success = false, null, null)
+                loginRepository._loginToken.emit(failedToken)
                 e.printStackTrace()
             }
         }
