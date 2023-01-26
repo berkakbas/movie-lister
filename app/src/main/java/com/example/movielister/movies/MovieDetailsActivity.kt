@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.movielister.data.MovieGenreHelper
 import com.example.movielister.databinding.ActivityMovieDetailsBinding
-import com.example.movielister.helper.HelperFunctions
 import com.example.movielister.model.MovieModel
 import com.example.movielister.util.organizeDate
 import com.squareup.picasso.Picasso
@@ -24,20 +23,40 @@ class MovieDetailsActivity : AppCompatActivity() {
 
         val intent = intent
         val movie = intent.getSerializableExtra("movie") as MovieModel
+        bindMovieDetails(movie)
 
-        movieDetailsViewModel.fetchCredits(movie.id)
+        movie.id?.let {
+            movieDetailsViewModel.fetchCredits(it)
+            movieDetailsViewModel.fetchMovie(it)
+        }
+        bindCredits()
+        bindOtherDetails()
+    }
 
-        Picasso.get().load(movie.imageUrl + movie.posterPath).into(binding.movieImage)
-        binding.ratingText.text = movie.voteAverage.toString()
+    private fun bindMovieDetails(movie: MovieModel) {
+        Picasso.get().load(movie.imageUrl + movie.poster_path).into(binding.movieImage)
+        binding.ratingText.text = movie.vote_average.toString()
         binding.movieTitle.text = movie.title
-        binding.genreText.text = MovieGenreHelper.genreIdsToString(movie.genreIds)
-        binding.dateText.text = movie.releaseDate.organizeDate()
+        movie.genre_ids?.let {
+            binding.genreText.text = MovieGenreHelper.genreIdsToString(it)
+        }
+        binding.dateText.text = movie.release_date?.organizeDate()
         binding.descriptionText.text = movie.overview
+    }
 
+    private fun bindOtherDetails() {
+        lifecycleScope.launchWhenStarted {
+            movieDetailsViewModel.currentMovie.collect { movieDetails ->
+                binding.durationText.text = movieDetails.runtime.toString()
+            }
+        }
+    }
+
+    private fun bindCredits() {
         lifecycleScope.launchWhenStarted {
             movieDetailsViewModel.currentCredits.collect { credits ->
                 val director = credits.crew.firstOrNull { it.job == "Director" }
-                val writer = credits.crew.firstOrNull { it.department == "Writing"}
+                val writer = credits.crew.firstOrNull { it.department == "Writing" }
                 val firstStar = credits.cast.firstOrNull { it.order == 0 }
                 val secondStar = credits.cast.firstOrNull { it.order == 1 }
 

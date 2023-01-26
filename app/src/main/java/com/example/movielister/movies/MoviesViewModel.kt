@@ -1,5 +1,6 @@
 package com.example.movielister.movies
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -18,23 +19,13 @@ constructor(private val moviesRepository: MoviesRepository) : ViewModel() {
 
     val popularMoviesList = moviesRepository._popularMoviesList.asSharedFlow()
 
-    val currentMovie = moviesRepository._currentMovie.asSharedFlow()
-
     fun fetchPopularMovies() {
         viewModelScope.launch {
             runCatching {
+                Log.d("xxx 1", "run")
                 moviesRepository.fetchPopularMovies()
             }.onFailure {
-                it.printStackTrace()
-            }
-        }
-    }
-
-    fun fetchMovie(movieID: Int) {
-        viewModelScope.launch {
-            runCatching {
-                moviesRepository.fetchMovie(movieID)
-            }.onFailure {
+                Log.d("xxx 2", it.toString())
                 it.printStackTrace()
             }
         }
