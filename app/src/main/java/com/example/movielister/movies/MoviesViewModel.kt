@@ -19,8 +19,6 @@ constructor(private val moviesRepository: MoviesRepository) : ViewModel() {
 
     val popularMoviesList = moviesRepository._popularMoviesList.asSharedFlow()
 
-    val currentMovie = moviesRepository._currentMovie.asSharedFlow()
-
     fun fetchPopularMovies() {
         viewModelScope.launch {
             runCatching {
@@ -28,16 +26,6 @@ constructor(private val moviesRepository: MoviesRepository) : ViewModel() {
                 moviesRepository.fetchPopularMovies()
             }.onFailure {
                 Log.d("xxx 2", it.toString())
-                it.printStackTrace()
-            }
-        }
-    }
-
-    fun fetchMovie(movieID: Int) {
-        viewModelScope.launch {
-            runCatching {
-                moviesRepository.fetchMovie(movieID)
-            }.onFailure {
                 it.printStackTrace()
             }
         }

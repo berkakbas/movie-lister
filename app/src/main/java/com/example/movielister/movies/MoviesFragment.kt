@@ -36,10 +36,6 @@ class MoviesFragment : Fragment() {
                 binding.moviesRecyclerView.adapter = MovieListAdapter(popularList)
             }
         }
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            moviesViewModel.currentMovie.collect { currentMovie ->
-            }
-        }
 
         super.onViewCreated(view, savedInstanceState)
     }
