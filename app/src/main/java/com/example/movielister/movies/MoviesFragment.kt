@@ -1,7 +1,6 @@
 package com.example.movielister.movies
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,7 +30,6 @@ class MoviesFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             moviesViewModel.popularMoviesList.collect { popularList ->
-                Log.d("xxx 0", popularList.size.toString())
                 binding.moviesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
                 binding.moviesRecyclerView.adapter = MovieListAdapter(popularList)
             }

@@ -1,7 +1,6 @@
 package com.example.movielister.adapter
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -29,7 +28,6 @@ class MovieListAdapter(private val movieList: List<MovieModel>) : RecyclerView.A
         holder.binding.releaseDateText.text = movie.release_date?.organizeDate()
         holder.binding.ratingText.text = movie.vote_average?.toString()
         Picasso.get().load(movie.imageUrl + movie.poster_path).into(holder.binding.movieImage)
-        Log.d("xxx 4 adapter", movie.imageUrl + movie.poster_path)
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MovieDetailsActivity::class.java)
             intent.putExtra("movie", movieList.get(position))
