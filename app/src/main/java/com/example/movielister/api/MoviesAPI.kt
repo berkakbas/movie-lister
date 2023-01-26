@@ -3,6 +3,7 @@ package com.example.movielister.api
 import com.example.movielister.BuildConfig.API_KEY
 import com.example.movielister.BuildConfig.API_STR
 import com.example.movielister.model.MovieCreditsModel
+import com.example.movielister.model.MovieDetailsModel
 import com.example.movielister.model.MovieModel
 import com.example.movielister.model.MovieResponseModel
 import com.example.movielister.network.WebService
@@ -18,7 +19,7 @@ interface MoviesAPI {
     suspend fun fetchPopularMovies(): MovieResponseModel?
 
     @GET("$MOVIE{id}$API_STR$API_KEY")
-    suspend fun fetchMovie(@Path("id") movieId: Int): MovieModel?
+    suspend fun fetchMovie(@Path("id") movieId: Int): MovieDetailsModel?
 
     @GET("$MOVIE{id}/$CREDITS$API_STR$API_KEY")
     suspend fun fetchCredits(@Path("id") movieId: Int): MovieCreditsModel?
