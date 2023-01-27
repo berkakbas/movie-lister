@@ -36,7 +36,10 @@ class TvSeriesDetailsActivity : AppCompatActivity() {
         lifecycleScope.launchWhenStarted {
             seriesDetailsViewModel.currentCredits.collect { credits ->
                 val creators = credits.crew.filter { it.job == "Executive Producer" }
-                binding.creatorText.text = creators[0]?.name + ", " + creators[1]?.name
+                when {
+                    creators.size == 1 -> binding.creatorText.text = creators[0].name
+                    creators.size >= 2 -> binding.creatorText.text = creators[0].name + ", " + creators[1].name
+                }
             }
         }
     }
