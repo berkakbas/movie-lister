@@ -21,18 +21,15 @@ class MoviesFragment : Fragment() {
 
     private val moviesViewModel by viewModels<MoviesViewModel>()
 
+    val pagerTranslationX = 900
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentMoviesBinding.inflate(inflater, container, false)
 
-        //binding.viewpager.setClipToPadding(false)
-        //binding.viewpager.setPadding(300,0,300,0)
         binding.viewpager.offscreenPageLimit = 2
 
-        val nextItemVisiblePx = 100
-        val currentItemHorizontalMarginPx = 20
-        val pageTranslationX = 900
         val pageTransformer = ViewPager2.PageTransformer { page: View, position: Float ->
-            page.translationX = -pageTranslationX * position
+            page.translationX = -pagerTranslationX * position
             page.alpha = if (position == 0f) 1f else 0.5f
         }
         binding.viewpager.setPageTransformer(pageTransformer)
