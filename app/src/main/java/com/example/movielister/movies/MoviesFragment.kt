@@ -12,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.movielister.adapter.MovieListAdapter
 import com.example.movielister.adapter.MovieViewPagerAdapter
 import com.example.movielister.databinding.FragmentMoviesBinding
+import com.example.movielister.util.px
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,7 +22,9 @@ class MoviesFragment : Fragment() {
 
     private val moviesViewModel by viewModels<MoviesViewModel>()
 
-    val pagerTranslationX = 900
+    private val nextItemVisibleAmount = 250.px
+    private val currentItemHorizontalMargin= 20.px
+    private val pagerTranslationX = nextItemVisibleAmount - currentItemHorizontalMargin
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentMoviesBinding.inflate(inflater, container, false)
