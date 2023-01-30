@@ -1,5 +1,6 @@
 package com.example.movielister.util
 
+import android.content.res.Resources
 import android.view.View
 
 fun View.show() {
@@ -13,4 +14,7 @@ fun View.invisible() {
 fun View.hide() {
     this.visibility = View.GONE
 }
+
+val Int.px: Int
+    get() = (this * Resources.getSystem().displayMetrics.density).toInt()
 

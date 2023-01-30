@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.movielister.data.MovieGenreHelper
 import com.example.movielister.databinding.MovieHolderBinding
 import com.example.movielister.model.MovieModel
 import com.example.movielister.movies.MovieDetailsActivity
@@ -33,6 +34,7 @@ class MovieViewPagerAdapter(private val movieList: List<MovieModel>) : RecyclerV
             }
 
             movieHolderBinding.movieName.text = movie.title
+            movieHolderBinding.ratingText.text = movie.vote_average.toString()
             Picasso.get().load(movie.imageUrl + movie.poster_path).into(movieHolderBinding.movieImage)
         }
     }
