@@ -15,12 +15,28 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/seriesCollapsingToolbar"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="350dp"
             app:collapsedTitleTextColor="@color/black"
             app:contentScrim="@color/reddish_orange"
             app:expandedTitleTextColor="@color/white"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
             app:title="@string/tv_series">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/seriesViewPagerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/seriesViewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
