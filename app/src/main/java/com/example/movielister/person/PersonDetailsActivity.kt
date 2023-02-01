@@ -40,8 +40,8 @@ class PersonDetailsActivity : AppCompatActivity() {
 
     private fun bindPersonImage() {
         lifecycleScope.launchWhenStarted {
-            personDetailsViewModel.currentImage.collect { personImagePath ->
-                Picasso.get().load(personImagePath.imageUrl + personImagePath).into(binding.personImage)
+            personDetailsViewModel.currentImage.collect { personImageModel ->
+                Picasso.get().load(personImageModel.imageUrl + personImageModel.filePath).into(binding.personImage)
             }
         }
     }
