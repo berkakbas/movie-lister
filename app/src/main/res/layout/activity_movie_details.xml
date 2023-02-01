@@ -201,7 +201,7 @@
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/starsText"
+                android:id="@+id/firstStarText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -209,6 +209,19 @@
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="@+id/starsTitle"
                 app:layout_constraintStart_toEndOf="@+id/starsTitle"
+                app:layout_constraintTop_toTopOf="@+id/starsTitle">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/secondStarText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textColor="@color/electric_blue"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@+id/starsTitle"
+                app:layout_constraintStart_toEndOf="@+id/firstStarText"
                 app:layout_constraintTop_toTopOf="@+id/starsTitle">
 
             </androidx.appcompat.widget.AppCompatTextView>

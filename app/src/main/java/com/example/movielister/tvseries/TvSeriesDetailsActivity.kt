@@ -1,5 +1,6 @@
 package com.example.movielister.tvseries
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -8,6 +9,8 @@ import com.example.movielister.data.TvSeriesGenreHelper
 import com.example.movielister.databinding.ActivityTvSeriesDetailsBinding
 import com.example.movielister.helper.HelperFunctions
 import com.example.movielister.model.TvSeriesModel
+import com.example.movielister.person.PersonDetailsActivity
+import com.example.movielister.util.invisible
 import com.squareup.picasso.Picasso
 
 class TvSeriesDetailsActivity : AppCompatActivity() {
@@ -37,8 +40,30 @@ class TvSeriesDetailsActivity : AppCompatActivity() {
             seriesDetailsViewModel.currentCredits.collect { credits ->
                 val creators = credits.crew.filter { it.job == "Executive Producer" }
                 when {
-                    creators.size == 1 -> binding.creatorText.text = creators[0].name
-                    creators.size >= 2 -> binding.creatorText.text = creators[0].name + ", " + creators[1].name
+                    creators.size == 0 -> binding.creatorTitle.invisible()
+                    creators.size == 1 -> {
+                        binding.firstCreatorText.text = creators[0].name
+                        binding.firstCreatorText.setOnClickListener {
+                            val personIntent = Intent(this@TvSeriesDetailsActivity, PersonDetailsActivity::class.java)
+                            personIntent.putExtra("person_id", creators[0].id)
+                            startActivity(personIntent)
+                        }
+                    }
+                    creators.size >= 2 -> {
+                        binding.firstCreatorText.text = creators[0].name
+                        binding.secondCreatorText.text = creators[1].name
+
+                        binding.firstCreatorText.setOnClickListener {
+                            val personIntent = Intent(this@TvSeriesDetailsActivity, PersonDetailsActivity::class.java)
+                            personIntent.putExtra("person_id", creators[0].id)
+                            startActivity(personIntent)
+                        }
+                        binding.secondCreatorText.setOnClickListener {
+                            val personIntent = Intent(this@TvSeriesDetailsActivity, PersonDetailsActivity::class.java)
+                            personIntent.putExtra("person_id", creators[1].id)
+                            startActivity(personIntent)
+                        }
+                    }
                 }
             }
         }
