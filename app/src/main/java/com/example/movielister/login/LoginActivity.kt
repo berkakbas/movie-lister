@@ -1,6 +1,7 @@
 package com.example.movielister.login
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -19,13 +20,11 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
         loginViewModel.createToken()
-
         observeLogin()
         observeSession()
 
-        binding.loginButton.setOnClickListener {
-            loginClicked()
-        }
+        bindClickListeners()
+
         setContentView(binding.root)
     }
 
@@ -59,6 +58,24 @@ class LoginActivity : AppCompatActivity() {
                 loginViewModel.sessionId.value = it.session_id
                 LoginInfo.sessionId = it.session_id
             }
+        }
+    }
+
+    private fun bindClickListeners() {
+        binding.loginButton.setOnClickListener {
+            loginClicked()
+        }
+
+        binding.forgotPasswordText.setOnClickListener {
+            val forgotPasswordUri = Uri.parse("https://www.themoviedb.org/reset-password")
+            val intent = Intent(Intent.ACTION_VIEW, forgotPasswordUri)
+            startActivity(intent)
+        }
+
+        binding.registerText.setOnClickListener {
+            val registerUri = Uri.parse("https://www.themoviedb.org/signup")
+            val intent = Intent(Intent.ACTION_VIEW, registerUri)
+            startActivity(intent)
         }
     }
 
