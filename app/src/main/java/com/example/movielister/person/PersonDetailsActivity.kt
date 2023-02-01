@@ -20,14 +20,20 @@ class PersonDetailsActivity : AppCompatActivity() {
         binding = ActivityPersonDetailsBinding.inflate(layoutInflater)
 
         val intent = intent
-        val person = intent.getSerializableExtra("person") as PersonModel
+        val person = intent.getSerializableExtra("person") as PersonModel?
+        val personId = intent.getSerializableExtra("person_id") as Int?
 
-        person.id?.let {
+        person?.let {
+            personDetailsViewModel.fetchPerson(it.id!!)
+            personDetailsViewModel.fetchPersonImage(it.id)
+            bindPersonDetails(person)
+        }
+        personId?.let {
             personDetailsViewModel.fetchPerson(it)
+            bindPersonFromNetwork()
             personDetailsViewModel.fetchPersonImage(it)
         }
 
-        bindPersonDetails(person)
         bindPersonImage()
 
         setContentView(binding.root)
@@ -36,6 +42,15 @@ class PersonDetailsActivity : AppCompatActivity() {
     private fun bindPersonDetails(person: PersonModel) {
         binding.personName.text = person.name
         binding.bioText.text = person.biography
+    }
+
+    private fun bindPersonFromNetwork() {
+        lifecycleScope.launchWhenStarted {
+            personDetailsViewModel.currentPerson.collect { person ->
+                binding.personName.text = person.name
+                binding.bioText.text = person.biography
+            }
+        }
     }
 
     private fun bindPersonImage() {

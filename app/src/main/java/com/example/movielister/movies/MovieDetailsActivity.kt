@@ -1,5 +1,6 @@
 package com.example.movielister.movies
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -7,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.movielister.data.MovieGenreHelper
 import com.example.movielister.databinding.ActivityMovieDetailsBinding
 import com.example.movielister.model.MovieModel
+import com.example.movielister.person.PersonDetailsActivity
 import com.example.movielister.util.organizeDate
 import com.squareup.picasso.Picasso
 
@@ -62,11 +64,36 @@ class MovieDetailsActivity : AppCompatActivity() {
 
                 director?.let {
                     binding.directorText.text = it.name
+                    binding.directorText.setOnClickListener {
+                        val intent = Intent(this@MovieDetailsActivity, PersonDetailsActivity::class.java)
+                        intent.putExtra("person_id", director.id)
+                        startActivity(intent)
+                    }
                 }
                 writer?.let {
                     binding.writersText.text = it.name
+                    binding.writersText.setOnClickListener {
+                        val intent = Intent(this@MovieDetailsActivity, PersonDetailsActivity::class.java)
+                        intent.putExtra("person_id", writer.id)
+                        startActivity(intent)
+                    }
                 }
-                binding.starsText.text = firstStar?.name + ", " + secondStar?.name
+                firstStar?.let {
+                    binding.firstStarText.text = firstStar.name
+                    binding.firstStarText.setOnClickListener {
+                        val intent = Intent(this@MovieDetailsActivity, PersonDetailsActivity::class.java)
+                        intent.putExtra("person_id", firstStar.id)
+                        startActivity(intent)
+                    }
+                }
+                secondStar?.let {
+                    binding.secondStarText.text = secondStar.name
+                    binding.secondStarText.setOnClickListener {
+                        val intent = Intent(this@MovieDetailsActivity, PersonDetailsActivity::class.java)
+                        intent.putExtra("person_id", secondStar.id)
+                        startActivity(intent)
+                    }
+                }
             }
         }
     }
