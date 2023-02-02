@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.movielister.adapter.MovieListAdapter
+import com.example.movielister.adapter.SearchListAdapter
 import com.example.movielister.databinding.FragmentSearchBinding
 import com.jakewharton.rxbinding3.widget.textChanges
 import java.util.concurrent.TimeUnit
@@ -33,9 +33,9 @@ class SearchFragment : Fragment() {
         bindTextListener()
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            searchViewModel.movieResults.collect { movieList ->
+            searchViewModel.searchResults.collect { searchList ->
                 binding.searchRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-                binding.searchRecyclerView.adapter = MovieListAdapter(movieList)
+                binding.searchRecyclerView.adapter = SearchListAdapter(searchList, requireContext())
             }
         }
 
@@ -46,7 +46,7 @@ class SearchFragment : Fragment() {
         binding.searchEditText.textChanges()
             .throttleFirst(500, TimeUnit.MILLISECONDS)
             .subscribe { charSequence ->
-                searchViewModel.searchMovie(charSequence.toString())
+                searchViewModel.searchMulti(charSequence.toString())
             }
     }
 

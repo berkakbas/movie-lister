@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.movielister.data.MovieGenreHelper
 import com.example.movielister.databinding.ActivityMovieDetailsBinding
 import com.example.movielister.model.MovieModel
+import com.example.movielister.model.MultiSearchModel
 import com.example.movielister.person.PersonDetailsActivity
 import com.example.movielister.util.organizeDate
 import com.squareup.picasso.Picasso
@@ -24,13 +25,17 @@ class MovieDetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val intent = intent
-        val movie = intent.getSerializableExtra("movie") as MovieModel
-        bindMovieDetails(movie)
-
-        movie.id?.let {
-            movieDetailsViewModel.fetchCredits(it)
-            movieDetailsViewModel.fetchMovie(it)
+        var movie = intent.getSerializableExtra("movie") as MovieModel?
+        if (movie == null) {
+            val movieSearchModel = intent.getSerializableExtra("movieSearchModel") as MultiSearchModel.MovieSearchModel?
+            movie = (movieSearchModel as MultiSearchModel.MovieSearchModel).toMovieModel()
         }
+        movie?.let {
+            bindMovieDetails(it)
+            movieDetailsViewModel.fetchCredits(it.id!!)
+            movieDetailsViewModel.fetchMovie(it.id)
+        }
+
         bindCredits()
         bindOtherDetails()
     }
@@ -96,5 +101,14 @@ class MovieDetailsActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun MultiSearchModel.MovieSearchModel.toMovieModel(): MovieModel {
+        return MovieModel(
+            id = id, vote_average = vote_average,
+            release_date = release_date, overview = overview,
+            title = title, poster_path = poster_path, genre_ids = genre_ids,
+            backdrop_path = null
+        )
     }
 }

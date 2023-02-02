@@ -9,14 +9,14 @@ import kotlinx.coroutines.launch
 class SearchViewModel : ViewModel() {
     private val searchRepository = SearchRepository()
 
-    val movieResults = searchRepository._movieResults.asSharedFlow()
+    val searchResults = searchRepository._searchResults.asSharedFlow()
 
     val seriesResults = searchRepository._seriesResults.asSharedFlow()
 
-    fun searchMovie(query: String) {
+    fun searchMulti(query: String) {
         viewModelScope.launch {
             try {
-                searchRepository.searchMovie(query)
+                searchRepository.searchMulti(query)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
