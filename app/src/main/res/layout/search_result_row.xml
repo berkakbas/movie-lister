@@ -5,6 +5,7 @@
     android:layout_height="140dp">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/searchItemView"
         android:layout_width="350dp"
         android:layout_height="120dp"
         app:cardCornerRadius="12dp"
@@ -30,11 +31,10 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/searchName"
-                android:layout_width="wrap_content"
+                android:layout_width="240dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Search Name"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/searchImage"
@@ -57,7 +57,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="@string/movie"
                 app:layout_constraintBottom_toBottomOf="@+id/searchTypeImage"
                 app:layout_constraintStart_toEndOf="@+id/searchTypeImage"
                 app:layout_constraintTop_toTopOf="@+id/searchTypeImage" />
