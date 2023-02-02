@@ -9,6 +9,7 @@ import com.example.movielister.R
 import com.example.movielister.databinding.SearchResultRowBinding
 import com.example.movielister.model.MultiSearchModel
 import com.example.movielister.movies.MovieDetailsActivity
+import com.example.movielister.person.PersonDetailsActivity
 import com.example.movielister.tvseries.TvSeriesDetailsActivity
 import com.squareup.picasso.Picasso
 
@@ -47,8 +48,14 @@ class SearchListAdapter(private val searchList: List<MultiSearchModel>, private 
             }
             is MultiSearchModel.PersonSearchModel -> {
                 holder.binding.searchName.text = searchItem.name
+                Picasso.get().load(searchItem.imageUrl + searchItem.profile_path).into(holder.binding.searchImage)
                 holder.binding.searchTypeImage.setImageResource(R.drawable.ic_person_blue)
                 holder.binding.searchTypeText.text = context.getText(R.string.person)
+                holder.binding.searchItemView.setOnClickListener {
+                    val intent = Intent(context, PersonDetailsActivity::class.java)
+                    intent.putExtra("person_id", searchItem.id)
+                    context.startActivity(intent)
+                }
             }
         }
     }
