@@ -24,7 +24,11 @@ sealed class MultiSearchModel : Serializable {
     data class SeriesSearchModel(
         @SerializedName("id") val id: Int?,
         @SerializedName("name") val name: String?,
+        @SerializedName("overview") val overview: String?,
         @SerializedName("poster_path") val poster_path: String?,
+        @SerializedName("vote_average") val vote_average: Float?,
+        @SerializedName("first_air_date") val first_air_date: String?,
+        @SerializedName("genre_ids") val genre_ids: List<Int>,
         @SerializedName("media_type") val mediaType: String?,
     ) : MultiSearchModel()
 

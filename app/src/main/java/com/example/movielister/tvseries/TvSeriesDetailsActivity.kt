@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.movielister.data.TvSeriesGenreHelper
 import com.example.movielister.databinding.ActivityTvSeriesDetailsBinding
 import com.example.movielister.helper.HelperFunctions
+import com.example.movielister.model.MultiSearchModel
 import com.example.movielister.model.TvSeriesModel
 import com.example.movielister.person.PersonDetailsActivity
 import com.example.movielister.util.invisible
@@ -25,7 +26,12 @@ class TvSeriesDetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val intent = intent
-        val series = intent.getSerializableExtra("series") as TvSeriesModel
+        var series = intent.getSerializableExtra("series") as TvSeriesModel?
+
+        if (series == null) {
+            val seriesSearchModel = intent.getSerializableExtra("seriesSearchModel") as MultiSearchModel.SeriesSearchModel
+            series = seriesSearchModel.ToTvSeriesModel()
+        }
 
         seriesDetailsViewModel.fetchCredits(series.id)
 
@@ -33,7 +39,9 @@ class TvSeriesDetailsActivity : AppCompatActivity() {
         binding.seriesRatingText.text = series.voteAverage.toString()
         binding.seriesTitle.text = series.name
         binding.seriesDescriptionText.text = series.overview
-        binding.seriesDateText.text = HelperFunctions.organizeDate(series.firstAirDate)
+        series.firstAirDate?.let {
+            binding.seriesDateText.text = HelperFunctions.organizeDate(it)
+        }
         binding.seriesGenreText.text = TvSeriesGenreHelper.genreIdsToString(series.genreIds)
 
         lifecycleScope.launchWhenStarted {
@@ -67,5 +75,14 @@ class TvSeriesDetailsActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun MultiSearchModel.SeriesSearchModel.ToTvSeriesModel(): TvSeriesModel {
+        return TvSeriesModel(
+            id = this.id!!, name = this.name!!,
+            overview = this.overview!!, voteAverage = this.vote_average,
+            posterPath = this.poster_path, firstAirDate = this.first_air_date,
+            genreIds = this.genre_ids
+        )
     }
 }
