@@ -107,8 +107,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         return MovieModel(
             id = id, vote_average = vote_average,
             release_date = release_date, overview = overview,
-            title = title, poster_path = poster_path, genre_ids = genre_ids,
-            backdrop_path = null
+            title = title, poster_path = poster_path, genre_ids = genre_ids
         )
     }
 }
