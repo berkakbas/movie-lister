@@ -23,8 +23,6 @@ data class MovieModel(
     @SerializedName("vote_average") val vote_average: Float?,
     @ColumnInfo(name = "poster_path")
     @SerializedName("poster_path") val poster_path: String?,
-    @ColumnInfo(name = "backdrop_path")
-    @SerializedName("backdrop_path") val backdrop_path: String?,
     @ColumnInfo(name = "genre_ids")
     @SerializedName("genre_ids") val genre_ids: List<Int>?,
     val imageUrl: String = "https://image.tmdb.org/t/p/original/"
