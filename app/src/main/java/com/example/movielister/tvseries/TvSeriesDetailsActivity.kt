@@ -32,9 +32,14 @@ class TvSeriesDetailsActivity : AppCompatActivity() {
             val seriesSearchModel = intent.getSerializableExtra("seriesSearchModel") as MultiSearchModel.SeriesSearchModel
             series = seriesSearchModel.ToTvSeriesModel()
         }
+        bindSeriesDetails(series)
+        bindCreators()
+        series.id?.let {
+            seriesDetailsViewModel.fetchCredits(it)
+        }
+    }
 
-        seriesDetailsViewModel.fetchCredits(series.id)
-
+    private fun bindSeriesDetails(series: TvSeriesModel) {
         Picasso.get().load(series.imageUrl + series.posterPath).into(binding.seriesImage)
         binding.seriesRatingText.text = series.voteAverage.toString()
         binding.seriesTitle.text = series.name
@@ -43,7 +48,9 @@ class TvSeriesDetailsActivity : AppCompatActivity() {
             binding.seriesDateText.text = HelperFunctions.organizeDate(it)
         }
         binding.seriesGenreText.text = TvSeriesGenreHelper.genreIdsToString(series.genreIds)
+    }
 
+    private fun bindCreators() {
         lifecycleScope.launchWhenStarted {
             seriesDetailsViewModel.currentCredits.collect { credits ->
                 val creators = credits.crew.filter { it.job == "Executive Producer" }
@@ -79,7 +86,7 @@ class TvSeriesDetailsActivity : AppCompatActivity() {
 
     private fun MultiSearchModel.SeriesSearchModel.ToTvSeriesModel(): TvSeriesModel {
         return TvSeriesModel(
-            id = this.id!!, name = this.name!!,
+            id = this.id, name = this.name,
             overview = this.overview!!, voteAverage = this.vote_average,
             posterPath = this.poster_path, firstAirDate = this.first_air_date,
             genreIds = this.genre_ids
